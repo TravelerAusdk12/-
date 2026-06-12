@@ -1,0 +1,289 @@
+/* ===== 기본 스타일 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #1a1a1a;
+    color: #fff;
+    overflow: hidden;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+}
+
+/* ===== 게임 컨테이너 ===== */
+#game-container {
+    flex: 1;
+    background: linear-gradient(135deg, #2a2a3a 0%, #1a1a2e 100%);
+}
+
+/* ===== UI 오버레이 ===== */
+#ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* ===== 플레이어 정보 ===== */
+.player-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 30px;
+    pointer-events: auto;
+}
+
+.team {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid;
+    min-width: 200px;
+}
+
+.team h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-a {
+    border-left-color: #3498db;
+}
+
+.team-a h3 {
+    color: #3498db;
+}
+
+.team-b {
+    border-left-color: #e74c3c;
+}
+
+.team-b h3 {
+    color: #e74c3c;
+}
+
+.players-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.player-item {
+    font-size: 12px;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.player-hp {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hp-bar {
+    width: 80px;
+    height: 6px;
+    background: #333;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.hp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2ecc71, #f39c12, #e74c3c);
+    transition: width 0.2s;
+}
+
+/* ===== 스킬바 ===== */
+.skill-bar {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    pointer-events: auto;
+}
+
+.skill-slot {
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #444;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.skill-slot:hover {
+    border-color: #fff;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.skill-slot.ready {
+    border-color: #2ecc71;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+.skill-slot.cooldown-active {
+    border-color: #e74c3c;
+    opacity: 0.6;
+}
+
+.skill-key {
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    z-index: 2;
+}
+
+.cooldown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(231, 76, 60, 0.3);
+    border-radius: 2px;
+    display: none;
+}
+
+.skill-slot.cooldown-active .cooldown {
+    display: block;
+}
+
+/* ===== 미니맵 ===== */
+#minimap {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 150px;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #444;
+    border-radius: 4px;
+}
+
+/* ===== 모달 ===== */
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #2a2a3a;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid #444;
+}
+
+.modal-content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.modal-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #bbb;
+}
+
+/* ===== 버튼 ===== */
+.btn {
+    padding: 12px 24px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+    .player-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .skill-bar {
+        gap: 10px;
+    }
+
+    .skill-slot {
+        width: 50px;
+        height: 50px;
+    }
+
+    #minimap {
+        width: 100px;
+        height: 100px;
+    }
+}
