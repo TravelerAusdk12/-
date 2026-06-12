@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>♟️ Chess Battle Arena</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 게임 화면 -->
+        <div id="game-container"></div>
+
+        <!-- UI 오버레이 -->
+        <div id="ui-overlay">
+            <!-- 플레이어 정보 -->
+            <div id="player-info" class="player-info">
+                <div class="team team-a">
+                    <h3>팀 A</h3>
+                    <div id="team-a-players" class="players-list"></div>
+                </div>
+                <div class="team team-b">
+                    <h3>팀 B</h3>
+                    <div id="team-b-players" class="players-list"></div>
+                </div>
+            </div>
+
+            <!-- 스킬바 -->
+            <div id="skill-bar" class="skill-bar">
+                <div class="skill-slot" id="skill-q" title="Q - 스킬 1">
+                    <span class="skill-key">Q</span>
+                    <div class="cooldown"></div>
+                </div>
+                <div class="skill-slot" id="skill-e" title="E - 스킬 2">
+                    <span class="skill-key">E</span>
+                    <div class="cooldown"></div>
+                </div>
+                <div class="skill-slot" id="skill-r" title="R - 궁극기">
+                    <span class="skill-key">R</span>
+                    <div class="cooldown"></div>
+                </div>
+            </div>
+
+            <!-- 미니맵 -->
+            <canvas id="minimap"></canvas>
+
+            <!-- 게임 오버 화면 -->
+            <div id="game-over-screen" class="modal hidden">
+                <div class="modal-content">
+                    <h1 id="game-over-title">게임 오버</h1>
+                    <p id="game-over-message"></p>
+                    <button id="restart-btn" class="btn btn-primary">다시 시작</button>
+                    <button id="home-btn" class="btn btn-secondary">홈으로</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 스크립트 -->
+    <script src="js/characters.js"></script>
+    <script src="js/skills.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
